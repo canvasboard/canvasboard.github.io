@@ -1,0 +1,10 @@
+{
+  "v": 1,
+  "versione": "2026.10.16-0916",
+  "quando": "2026-10-16T07:20:13.554Z",
+  "url": "https://github.com/canvasboard/canvasboard.github.io/releases/download/pc-2026.10.16-0916/Canvas-portatile.zip",
+  "byte": 89654553,
+  "sha256": "5d7b154c49de7128608fecec9b6d923638213c395cca2edfa80d1f0c9486fdad",
+  "chiave": "f27dd05490b828ffc06643d426cf1bb46b27b4f30082c59e95df64d4611d975d",
+  "firma": "00f29bec12a96778f3a953002724a9645e853df88fc30187fbc1e40e2b515f869ccf957fd97f5e6304044976603cb59f45768a347095c2f08629499111b1ac0e"
+}

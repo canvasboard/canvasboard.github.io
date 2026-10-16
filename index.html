@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' blob: data:; connect-src 'self' wss: ws://127.0.0.1:* ws://localhost:* https://piston-meta.mojang.com https://piston-data.mojang.com; worker-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Canvas, la lavagna del team: versione di prova nel browser">
+<title>Canvas · prova web</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="canvas.css">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icone/canvas-192.png">
+<meta name="theme-color" content="#141518">
+</head>
+<body>
+<div id="app" class="app">
+  <header class="top" id="top">
+    <div class="logo" id="logo" aria-hidden="true"></div>
+    <button class="cb" id="progBtn" hidden data-tip="Progetto|Gli altri progetti, uno nuovo, entrare con un invito, rinominare, archiviare"><span id="progNome">…</span><i data-ic="chev" data-s="13"></i></button>
+    <button class="rpill solo" id="retePill" hidden></button>
+    <span class="stanza" id="stanzaPill" hidden></span>
+    <span class="g"></span>
+    <div class="persone" id="persone"></div>
+    <button class="ib mbbtn" id="membriBtn" hidden data-apre></button>
+    <button class="ib tmbtn" id="timerBtn" hidden data-apre></button>
+    <button class="ib" id="reazBtn" hidden data-apre data-tip="Reazioni|Un'emoji che sale da dove sei, per tutti|F" aria-label="Reazioni"></button>
+    <button class="ib" id="presentaBtn" hidden data-tip="Presenta|Chi c'è segue la tua vista · Esc per smettere" aria-label="Presenta"></button>
+    <button class="ib" id="regBtn" hidden data-tip="Registro|Le definizioni del team e le cose del gioco|D" aria-label="Registro"><i data-ic="cubo" data-s="16"></i></button>
+    <button class="btn" id="invitaBtn" hidden data-tip="Invita|Il codice per far entrare il team nel progetto"><i data-ic="invita" data-s="15"></i>Invita</button>
+    <span class="tdiv"></span>
+    <button class="ib" id="undoBtn" data-tip="Annulla|Ctrl Z" aria-label="Annulla" disabled><i data-ic="undo"></i></button>
+    <button class="ib" id="redoBtn" data-tip="Ripeti|Ctrl Y" aria-label="Ripeti" disabled><i data-ic="redo"></i></button>
+    <button class="ib" id="setBtn" data-tip="Impostazioni|Il tuo nome e il tuo colore" aria-label="Impostazioni"><i data-ic="impostazioni" data-s="17"></i></button>
+  </header>
+
+  <!-- la lavagna: il mondo (si sposta e si ingrandisce intero) e sopra, a misura di schermo, titoli, selezione e cursori.
+       Le zone non si toccano: strumenti a sinistra, opzioni e barre in alto, avvisi in basso, il gate aperto a destra -->
+  <main class="lav" id="lav">
+    <div class="griglia" id="griglia"></div>
+    <div class="mondo" id="mondo"><div id="sezioni"></div><svg class="rami" id="rami"></svg><div id="tappe"></div><div id="elementi"></div></div>
+    <div class="sopra" id="sopra">
+      <div id="titoli"></div>
+      <div id="altrui"></div>
+      <div class="acceso" id="acceso" hidden></div>
+      <div id="scelta"></div>
+      <div id="guide"></div>
+      <div class="riquadro" id="riquadro" hidden></div>
+      <div id="cursori"></div>
+      <div class="suggerisci" id="suggerisci" hidden></div>
+    </div>
+    <nav class="fl tb" id="tools" aria-label="Strumenti"></nav>
+    <div class="tstack" id="tstack">
+      <div class="fl op" id="opts" hidden></div>
+      <div class="fl segui" id="segui" hidden></div>
+    </div>
+    <div class="bstack" id="bstack"><div class="toast" id="toast" hidden></div></div>
+    <div class="fl zoom" id="zoom">
+      <button class="ib s" data-z="-" data-tip="Riduci|Ctrl −">  <i data-ic="minus" data-s="15"></i></button>
+      <button class="zv mono" id="zoomVal" data-z="100" data-tip="100%|Ctrl 0">100%</button>
+      <button class="ib s" data-z="+" data-tip="Ingrandisci|Ctrl +"><i data-ic="plus" data-s="15"></i></button>
+      <span class="zsep"></span>
+      <button class="ib s" data-z="adatta" data-tip="Mostra tutto|Maiusc 1"><i data-ic="adatta" data-s="15"></i></button>
+    </div>
+    <div class="dock" id="dock"><aside class="panel gp" id="gp" hidden></aside><aside class="panel gp mcp" id="mcp" hidden></aside></div>
+    <div class="vuoto" id="inizio" hidden></div>
+    <div class="fl inarrivo" id="attesa" hidden></div>
+    <div class="scollegato" id="scollegato" hidden><div class="spin"></div>Il motore non risponde · riprovo</div>
+  </main>
+
+  <div id="pops"></div>
+  <div class="dlg" id="dlg" hidden></div>
+  <div class="htip" id="htip" hidden></div>
+  <div class="veil" id="veil" hidden><div class="veilbox"><div class="spin"></div><span id="veilText">…</span></div></div>
+</div>
+<script type="module" src="canvas.js"></script>
+</body>
+</html>
